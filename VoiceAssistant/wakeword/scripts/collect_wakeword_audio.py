@@ -44,7 +44,7 @@ class Listener:
 
         # save audio file
         # open the file in 'write bytes' mode
-        wf = wave.open(file_name, "wb")
+        wf = wave.open("VoiceAssistant/wakeword/scripts/data/0/noise.wav", "wb")
         # set the channels
         wf.setnchannels(self.channels)
         # set the sample format
@@ -70,7 +70,8 @@ def interactive(args):
             for i in range(int((listener.sample_rate/listener.chunk) * listener.record_seconds)):
                 data = listener.stream.read(listener.chunk, exception_on_overflow = False)
                 frames.append(data)
-            save_path = os.path.join(args.interactive_save_path, "{}.wav".format(index))
+            #save_path = os.path.join(args.interactive_save_path, "{}.wav".format(index))
+            save_path = os.path.join("VoiceAssistant\wakeword\scripts\data\wakewords", str(index)+ ".wav")
             listener.save_audio(save_path, frames)
             index += 1
     except KeyboardInterrupt:
@@ -107,7 +108,8 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='''
-    Script to collect data for wake word training..
+    Script to collec
+    t data for wake word training..
 
     To record environment sound run set seconds to None. This will
     record indefinitely until ctrl + c.
