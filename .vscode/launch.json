@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "args": "--sample_rate 8000  --save_path VoiceAssistant/wakeword/scripts/data/0"
+            "args": ""
         }
     ]
 }
